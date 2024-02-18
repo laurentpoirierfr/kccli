@@ -12,7 +12,7 @@ kubectl create ns $NAMESPACE
 kubectl apply -k ./keycloak -n $NAMESPACE
 ```
 
-## /etc/resolv.conf
+## /etc/resolv.conf
 
 Add in **/etc/resolv.conf** minikube ip
 
