@@ -30,5 +30,5 @@ kubectl apply -k ./keycloak -n $NAMESPACE
 
 
 ```shell
-open https
+open https://keycloak.k8s.local
 ```
