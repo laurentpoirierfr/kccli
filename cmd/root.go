@@ -31,6 +31,11 @@ import (
 
 var cfgFile string
 
+const (
+	KEYCLOAK_API_URL = "keycloak.api.url"
+	KEYCLOAK_API_KEY = "keycloak.api.key"
+)
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "kccli",
@@ -83,6 +88,10 @@ func initConfig() {
 		viper.AddConfigPath(home)
 		viper.SetConfigType("yaml")
 		viper.SetConfigName(".kccli")
+
+		// keycloak
+		viper.Set(KEYCLOAK_API_URL, os.Getenv("KEYCLOAK_API_URL"))
+		viper.Set(KEYCLOAK_API_KEY, os.Getenv("KEYCLOAK_API_KEY"))
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match
@@ -91,4 +100,5 @@ func initConfig() {
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
 	}
+
 }
